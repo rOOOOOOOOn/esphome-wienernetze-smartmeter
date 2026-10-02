@@ -88,6 +88,8 @@ void WienerNetze::handle_message(std::vector<uint8_t> msg) {
   int offset = 0;
   if (memcmp(&msg[16], "SMSfp", 5) == 0) {
     ESP_LOGV(TAG, "Detected Siemens IM150/IM151/IM350/IM351");
+  } else if (memcmp(&msg[16], "SMSgp", 5) == 0) {
+    ESP_LOGV(TAG, "Detected Siemens IM351 (SMSgp)");
   } else if (memcmp(&msg[14], "LGZgs", 5) == 0) {
     ESP_LOGV(TAG, "Detected Landis+Gyr E450/E570");
     offset = -2;
